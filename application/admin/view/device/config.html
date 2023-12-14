@@ -1,0 +1,1088 @@
+
+<div class="panel panel-default panel-intro">
+    <div class="el-overlay" style="display: none;position: fixed;top: 0;right: 0;bottom: 0;left: 0;z-index: 2000;height: 100%;background-color:rgba(0, 0, 0, .5);">
+        <div id="preloader_1">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="panel-heading">
+        {:build_heading(null,FALSE)}
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#one" data-toggle="tab">状态</a></li>
+            <li><a href="#two" data-toggle="tab">配置</a></li>
+            <li><a href="#three" data-toggle="tab">调试</a></li>
+            <li><a href="#four" data-toggle="tab">要素</a></li>
+            <li><a href="#five" data-toggle="tab">透传</a></li>
+            <li><a href="#six" data-toggle="tab">轮询</a></li>
+        </ul>
+
+    </div>
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                    <button onclick="huoqu()">刷新</button>
+                </div>
+                <div>
+                    <label>当前卡号:</label>
+                    <input type="text" style="width: 45%" disabled class="card" />
+                </div>
+                <div>
+                    <label>总用水量:</label>
+                    <input type="text" style="width: 45%" disabled class="all_water" />
+                </div>
+                <div>
+                    <label>设备类型:</label>
+                    <input type="text" style="width: 45%" disabled class="device_type" />
+                </div>
+                <div>
+                    <label>类型的值:</label>
+                    <input type="text" style="width: 45%" disabled class="value" />
+                </div>
+                <div>
+                    <label>设备经度:</label>
+                    <input type="text" style="width: 45%" disabled class="longitude" />
+                </div>
+                <div>
+                    <label>设备纬度:</label>
+                    <input type="text" style="width: 45%" disabled class="latitude" />
+                </div>
+                <div>
+                    <label>设备电压:</label>
+                    <input type="text" style="width: 45%" disabled class="voltBat" />
+                </div>
+                <div>
+                    <label>当前版本:</label>
+                    <input type="text" style="width: 45%" disabled class="version" />
+                </div>
+                <div>
+                    <label>流量卡号:</label>
+                    <input type="text" style="width: 45%" disabled class="iccid" />
+                </div>
+                <div>
+                    <label>信号强度:</label>
+                    <input type="text" style="width: 45%" disabled class="signal" />
+                </div>
+
+            </div>
+            <div class="tab-pane fade  in" id="two">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                    <button onclick="zhaoce()">召测</button>
+                </div>
+                <div>
+                    <label>业务号码:</label>
+                    <input type="text" style="width: 45%" class="device_sn" name="device_sn" />
+                </div>
+                <div>
+                    <label>输出电源:</label>
+                    <input type="radio" value="0" name="power_out_put">关闭 <input type="radio" value="1" name="power_out_put"> 开启
+                </div>
+                <div>
+                    <label>设备类型:</label>
+                    <select class="device_type" style="width: 45%;padding: 5px;" name="device_type">
+                        <option value="0">无类型</option>
+                        <option value="1" selected>阀控</option>
+                        <option value="2">井灌控制器</option>
+                    </select>
+                </div>
+                <div>
+                    <label>休眠间隔:</label>
+                    <input type="text" style="width: 45%" class="sleep_loop" name="sleep_loop">秒
+                </div>
+                <div>
+                    <label>过程间隔:</label>
+                    <input type="text" style="width: 45%" class="open_loop" name="open_loop">秒
+                </div>
+                <div>
+                    <label>低压保护:</label>
+                    <input type="text" style="width: 45%" class="lowBatV" name="lowBatV">V
+                </div>
+                <div>
+                    <label>解除保护:</label>
+                    <input type="text" style="width: 45%" class="lowBatRecV" name="lowBatRecV">v
+                </div>
+                <div>
+                    <label>时间保护:</label>
+                    <input type="text" style="width: 45%" class="moto_max_run_sec" name="moto_max_run_sec">秒
+                </div>
+                <div>
+                    <label>角度保护:</label>
+                    <input type="text" style="width: 45%" class="moto_min_angle_per5s" name="moto_min_angle_per5s">度
+                </div>
+
+                <div>
+                    <label>服务器1]:</label>
+                    <input type="text" style="width: 45%" class="server1" name="server1">
+                </div>
+                <div>
+                    <label>服务器2]:</label>
+                    <input type="text" style="width: 45%" class="server2" name="server2">
+                </div>
+                <div>
+                    <label>服务器3]:</label>
+                    <input type="text" style="width: 45%" class="server3" name="server3">
+                </div>
+                <div>
+                    <label>服务器0]:</label>
+                    <input type="text" style="width: 45%" class="server" name="server">
+                </div>
+                <button style="width: 10ex;height: 5ex;" onclick="setbasics()">设置配置</button>
+            </div>
+            <div class="tab-pane fade  in" id="three">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                </div>
+                <div>
+                    <label>模拟卡号:</label>
+                    <input type="text" style="width: 45%" disabled value="XNC00001" readonly />
+                </div>
+                <div>
+                    <label>开关角度:</label>
+                    <input type="text" style="width: 25%" class="angle" placeholder="0~90°">
+                    <button onclick="dopen()">开关</button>
+                </div>
+                <p>-----------------------</p>
+                <div>
+                    <label>开关角度:</label>
+                    <select class="angle1" style="width: 25%">
+                        <option value="0">关闭蝶阀</option>
+                        <option value="90">打开蝶阀</option>
+                    </select>
+                    <button style="" onclick="dopen1()">开关</button>
+                </div>
+                <p>--------------------------------------------------</p>
+                <div>
+                    <label>矫正角度:</label>
+                    <select class="angle2" style="width: 25%">
+                        <option value="0">当前0°角</option>
+                        <option value="90">当前90°角</option>
+                    </select>
+                    <button style="" onclick="ddebug()">角度矫正</button>
+                </div>
+                <p>--------------------------------------------------</p>
+                <div>
+                    <label>设备重启:</label>
+                    <button style="" onclick="restart()">重启设备</button>
+                </div>
+                <p>--------------------------------------------------</p>
+                <div>
+                    <label>升级地址:</label>
+                    <input type="text" style="width: 25%" class="upgrade">
+                </div>
+                <div>
+                    <label>新版本号:</label>
+                    <input type="text" style="width: 15%" class="version1">
+                    <button style="" onclick="upgrade()">设备升级</button>
+                </div>
+            </div>
+            <div class="tab-pane fade  in" id="four">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                    <button style="width: 10ex;height: 5ex;" onclick="getelement()">获取要素</button>
+                </div>
+                <h5>-----------------------------------------------------------------------------------------------------------------</h5>
+                <div id="yaosu">
+                    <div>
+                        <label>波特率:</label>
+                        <input type="text" style="width: 45%" class="baudrate" value="" />
+                    </div>
+                    <div>
+                        <label>位&nbsp; &nbsp;数:</label>
+                        <input type="text" style="width: 45%"  class="databit" value="" />
+                    </div>
+                    <div>
+                        <label>停止位:</label>
+                        <input type="text" style="width: 45%"  class="stopbit" value="" />
+                    </div>
+                    <div>
+                        <label>校验位:</label>
+                        <select style="font-size: 18px;" class="parity">
+                            <option value="None">None</option>
+                            <option value="Odd">Odd</option>
+                            <option value="Even">Even</option>
+                        </select>
+                    </div>
+                </div>
+                <h5>--</h5>
+                <div>
+                    <button style="width: 20ex;height: 5ex;" onclick="setelement()">设置要素</button>
+                </div>
+                <div class="obj">
+                </div>
+            </div>
+            <div class="tab-pane fade  in" id="five">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                </div>
+                <div>
+                    <label>读取命令:</label>
+                    <input type="text" class="modbus" >
+                </div>
+                <div>
+                    <label>回应命令:</label>
+                    <input type="text" class="result" >
+                </div>
+                <div>
+                    <button onclick="modbus()">发送命令</button>
+                </div>
+            </div>
+            <div class="tab-pane fade  in" id="six">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                </div>
+                <div>
+                    <label>周&nbsp;&nbsp;&nbsp;期&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="pub_time" value="120" >秒
+                </div>
+                <div>
+                    <label>指&nbsp;令1&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="modbus_1" >
+                </div>
+                <div>
+                    <label>指&nbsp;令2&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="modbus_2" >
+                </div>
+                <div>
+                    <label>指&nbsp;令3&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="modbus_3" >
+                </div>
+                <div>
+                    <label>指&nbsp;令4&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="modbus_4" >
+                </div>
+                <div>
+                    <label>指&nbsp;令5&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="modbus_5" >
+                </div>
+                <div>
+                    <label>指&nbsp;令6&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="modbus_6" >
+                </div>
+                <div>
+                    <label>指&nbsp;令7&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="modbus_7" >
+                </div>
+                <div>
+                    <label>指&nbsp;令8&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="modbus_8" >
+                </div>
+                <div>
+                    <label>指&nbsp;令9&nbsp;:</label>
+                    <input type="text" style="width: 45%" class="modbus_9" >
+                </div>
+                <div>
+                    <label>指令10:</label>
+                    <input type="text" style="width: 45%" class="modbus_10" >
+                </div>
+                <div>
+                    <button onclick="set_modbus()">设置命令</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var devid = '{$row.devicekey}';
+    var elementnum=0;
+    function huoqu() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        $.ajax({
+            async:true,//http://211.149.170.148:9888/app/api/Http/down_device
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                'cmd':'down_device'
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        else {
+                            $.ajax({
+                                async:true,
+                                url:'http://idc.mingdingkeji.com/api/device/get',
+                                type:'POST',
+                                data:{
+                                    "devid":devid,
+                                    'ckey':"device_test",
+                                },
+                                dataType:'JSON',
+                                timeout:5000,
+                                success:function (obj) {
+                                    var data = obj.data;
+                                    if(data){
+                                        clearInterval(timer);
+                                        $('.el-overlay').hide();
+                                        $('.card').val(data.card);
+                                        $('.all_water').val(data.all_water);
+                                        $('.device_type').val(data.device_type);
+                                        $('.value').val(data.value);
+                                        $('.longitude').val(data.longitude);
+                                        $('.latitude').val(data.latitude);
+                                        $('.voltBat').val(data.voltBat);
+                                        $('.version').val(data.version);
+                                        $('.iccid').val(data.iccid);
+                                        $('.signal').val(data.signal);
+                                        alert("获取数据成功");
+                                    }
+                                }
+                            });
+                        }
+                        console.log(i);
+                    },1000);
+                }
+                else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function zhaoce() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_basics",
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"device_basics",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    $('.device_sn').val(data.device_sn)
+                                    var radio = document.getElementsByName("power_out_put");//获取组件
+                                    for (var i=0;i<radio.length;i++){
+                                    	//判断值
+                                       if(radio[i].value == data.power_out_put){
+                                       		//设置选中
+                                            radio[i].checked = true;
+                                        }
+                                    }
+                                    $('.device_type').val(data.device_type)
+                                    $('.sleep_loop').val(data.sleep_loop)
+                                    $('.open_loop').val(data.open_loop)
+                                    $('.lowBatV').val(data.lowBatV)
+                                    $('.lowBatRecV').val(data.lowBatRecV)
+                                    $('.moto_max_run_sec').val(data.moto_max_run_sec)
+                                    $('.moto_min_angle_per5s').val(data.moto_min_angle_per5s)
+                                    $('.server1').val(data.server1)
+                                    $('.server2').val(data.server2)
+                                    $('.server3').val(data.server3)
+                                    $('.server').val(data.server)
+                                    alert("获取数据成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function setbasics() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_set_basics",
+                "device_sn":$('.device_sn').val(),
+                "power_out_put":$('.power_out_put').val(),
+                "device_type":$('.device_type').val(),
+                "sleep_loop":$('.sleep_loop').val(),
+                "open_loop":$('.open_loop').val(),
+                "lowBatV":$('.lowBatV').val(),
+                "lowBatRecV":$('.lowBatRecV').val(),
+                "moto_max_run_sec":$('.moto_max_run_sec').val(),
+                "moto_min_angle_per5s":$('.moto_min_angle_per5s').val(),
+                "server1":$('.server1').val(),
+                "server2":$('.server2').val(),
+                "server3":$('.server3').val(),
+                "server":$('.server').val(),
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"device_set_basics",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    $('.device_sn').val(data.device_sn)
+                                    var radio = document.getElementsByName("power_out_put");//获取组件
+                                    for (var i=0;i<radio.length;i++){
+                                    	//判断值
+                                       if(radio[i].value == data.power_out_put){
+                                       		//设置选中
+                                            radio[i].checked = true;
+                                        }
+                                    }
+                                    $('.device_type').val(data.device_type)
+                                    $('.sleep_loop').val(data.sleep_loop)
+                                    $('.open_loop').val(data.open_loop)
+                                    $('.server1').val(data.server1)
+                                    $('.server2').val(data.server2)
+                                    $('.server3').val(data.server3)
+                                    $('.server').val(data.server)
+                                    alert("获取数据成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function dopen() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        var angle = $('.angle').val();
+        if(!angle){
+            $('.el-overlay').hide();
+            alert("请输入角度")
+            return '';
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_open",
+                "angle":angle,
+                "card":"XNC00001",
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"open",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    alert("设备操作成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else{
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+
+    }
+    function dopen1() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        var angle = $('.angle1').val();
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_open",
+                "angle":angle,
+                "card":"XNC00001",
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"open",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    alert("设备操作成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else{
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function ddebug() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        var angle = $('.angle2').val();
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_debug",
+                "angle":angle,
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"device_debug",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    alert("设备操作成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function restart() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_restart",
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    $('.el-overlay').hide();
+                    alert("重启命令下发成功");
+                }else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function upgrade() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        var version= $('.version1').val()
+        var upgrade =$('.upgrade').val()
+        if(!version || !upgrade){
+            $('.el-overlay').hide();
+            alert('版本号和升级包不能为空');
+            return '';
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_upgrade",
+                "version":version,
+                "upgrade_package":upgrade,
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    $('.el-overlay').hide();
+                    alert("升级命令已下发");
+                } else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function modbus() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        var modbus= $('.modbus').val()
+        if(!modbus){
+            $('.el-overlay').hide();
+            alert('modbus命令不能为空');
+            return '';
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_modbus",
+                "modbus":modbus
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"device_modbus",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    $('.modbus').val(data.modbus)
+                                    $('.result').val(data.result)
+                                    alert("获取数据成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function getelement() {
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        $('.obj').text('');
+        elementnum=0;
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_get_element",
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"device_get_element",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    $('.baudrate').val(data.rs485.baudrate);
+                                    $('.databit').val(data.rs485.databit);
+                                    $('.stopbit').val(data.rs485.stopbit);
+                                    $('.parity').val(data.rs485.parity);
+                                    alert("获取数据成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function setelement() {
+        $('.el-overlay').show();
+        $('.obj').text('');
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        var elem={
+            "baudrate":$('.baudrate').val(),
+            "databit":$('.databit').val(),
+            "stopbit":$('.stopbit').val(),
+            "parity":$('.parity').val()
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_set_element",
+                "rs485":elem
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"device_set_element",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    $('.obj').text(data.toString());
+                                    alert("获取数据成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function set_modbus(){
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        var pub_time= $('.pub_time').val()
+        var modbus_1= $('.modbus_1').val()
+        var modbus_2= $('.modbus_2').val()
+        var modbus_3= $('.modbus_3').val()
+        var modbus_4= $('.modbus_4').val()
+        var modbus_5= $('.modbus_5').val()
+        var modbus_6= $('.modbus_6').val()
+        var modbus_7= $('.modbus_7').val()
+        var modbus_8= $('.modbus_8').val()
+        var modbus_9= $('.modbus_9').val()
+        var modbus_10= $('.modbus_10').val()
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_set_modbus",
+                "pub_time":pub_time,
+                "modbus_1":modbus_1,
+                "modbus_2":modbus_2,
+                "modbus_3":modbus_3,
+                "modbus_4":modbus_4,
+                "modbus_5":modbus_5,
+                "modbus_6":modbus_6,
+                "modbus_7":modbus_7,
+                "modbus_8":modbus_8,
+                "modbus_9":modbus_9,
+                "modbus_10":modbus_10,
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"device_modbus",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    $('.modbus').val(data.modbus)
+                                    $('.result').val(data.result)
+                                    alert("获取数据成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+
+</script>
+

@@ -1,0 +1,115 @@
+
+<div class="panel panel-default panel-intro">
+    <div class="el-overlay" style="display: none;position: fixed;top: 0;right: 0;bottom: 0;left: 0;z-index: 2000;height: 100%;background-color:rgba(0, 0, 0, .5);">
+        <div id="preloader_1">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="panel-heading">
+        {:build_heading(null,FALSE)}
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#one" data-toggle="tab">状态</a></li>
+            <li><a href="#two" data-toggle="tab">开关</a></li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                    <button onclick="huoqu()">刷新</button>
+                </div>
+                <div>
+                    <label>当前电量:</label>
+                    <input type="text" style="width: 45%" disabled class="volt" />
+                </div>
+                <div>
+                    <label>限制状态:</label>
+                    <input type="text" style="width: 45%" disabled class="status" />
+                </div>
+                <div>
+                    <label>输出状态:</label>
+                    <input type="text" style="width: 45%" disabled class="out" />
+                </div>
+                <div>
+                    <label>上报时间:</label>
+                    <input type="text" style="width: 45%" disabled class="time" />
+                </div>
+            </div>
+            <div class="tab-pane fade  in" id="two">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                </div>
+                <p>-----------------------</p>
+                <div>
+                    <label>操作限制:</label>
+                    <select class="open" style="width: 25%">
+                        <option value="0">供电</option>
+                        <option value="1">不供电</option>
+                    </select>
+                    <button onclick="dopen()">开关</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var devid = '{$row.devicekey}';
+    function huoqu() {
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/Api/Device/get',
+            type:'POST',
+            data:{
+                "devid":devid,
+                'ckey':"device_test",
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                var data = obj.data;
+                if(data){
+                    $('.volt').val(data.volt);
+                    if(data.open == 1){
+                        $('.status').val('不供电');
+                    } else{
+                        $('.status').val('供电');
+                    }
+                    if(data.out == 1){
+                        $('.out').val('供电');
+                    } else{
+                        $('.out').val('不供电');
+                    }
+                    $('.time').val(data.time);
+                }
+            }
+        });
+    }
+    function dopen() {
+        open =  $('.open').val();
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                'cmd':'down_tran_msg',
+                'open':open
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                var data = obj.data;
+                alert('请求成功');
+            }
+        });
+    }
+
+</script>
+
