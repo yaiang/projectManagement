@@ -18,6 +18,8 @@
             <li><a href="#four" data-toggle="tab">要素</a></li>
             <li><a href="#five" data-toggle="tab">透传</a></li>
             <li><a href="#six" data-toggle="tab">轮询</a></li>
+            <li><a href="#seven" data-toggle="tab">结果</a></li>
+            <li><a href="#eight" data-toggle="tab">协议</a></li>
         </ul>
 
     </div>
@@ -241,6 +243,7 @@
                 <div>
                     <label>设备序列:</label>
                     <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                    <button onclick="get_modbus()">获取</button>
                 </div>
                 <div>
                     <label>周&nbsp;&nbsp;&nbsp;期&nbsp;:</label>
@@ -248,46 +251,132 @@
                 </div>
                 <div>
                     <label>指&nbsp;令1&nbsp;:</label>
-                    <input type="text" style="width: 45%" class="modbus_1" >
+                    <input type="text" style="width: 45%" class="modbus_1" value=";" >
                 </div>
                 <div>
                     <label>指&nbsp;令2&nbsp;:</label>
-                    <input type="text" style="width: 45%" class="modbus_2" >
+                    <input type="text" style="width: 45%" class="modbus_2" value=";" >
                 </div>
                 <div>
                     <label>指&nbsp;令3&nbsp;:</label>
-                    <input type="text" style="width: 45%" class="modbus_3" >
+                    <input type="text" style="width: 45%" class="modbus_3" value=";" >
                 </div>
                 <div>
                     <label>指&nbsp;令4&nbsp;:</label>
-                    <input type="text" style="width: 45%" class="modbus_4" >
+                    <input type="text" style="width: 45%" class="modbus_4" value=";" >
                 </div>
                 <div>
                     <label>指&nbsp;令5&nbsp;:</label>
-                    <input type="text" style="width: 45%" class="modbus_5" >
+                    <input type="text" style="width: 45%" class="modbus_5" value=";" >
                 </div>
                 <div>
                     <label>指&nbsp;令6&nbsp;:</label>
-                    <input type="text" style="width: 45%" class="modbus_6" >
+                    <input type="text" style="width: 45%" class="modbus_6" value=";" >
                 </div>
                 <div>
                     <label>指&nbsp;令7&nbsp;:</label>
-                    <input type="text" style="width: 45%" class="modbus_7" >
+                    <input type="text" style="width: 45%" class="modbus_7" value=";" >
                 </div>
                 <div>
                     <label>指&nbsp;令8&nbsp;:</label>
-                    <input type="text" style="width: 45%" class="modbus_8" >
+                    <input type="text" style="width: 45%" class="modbus_8" value=";" >
                 </div>
                 <div>
                     <label>指&nbsp;令9&nbsp;:</label>
-                    <input type="text" style="width: 45%" class="modbus_9" >
+                    <input type="text" style="width: 45%" class="modbus_9" value=";" >
                 </div>
                 <div>
                     <label>指令10:</label>
-                    <input type="text" style="width: 45%" class="modbus_10" >
+                    <input type="text" style="width: 45%" class="modbus_10" value=";" >
                 </div>
                 <div>
                     <button onclick="set_modbus()">设置命令</button>
+                </div>
+            </div>
+            <div class="tab-pane fade  in" id="seven">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                    <button onclick="up_modbus()">获取</button>
+                </div>
+                <div>
+                    <label>指&nbsp;令1&nbsp;:</label>
+                    <input type="text" style="width: 40%" class="modbus_1" value="" >
+                    <input type="text" style="width: 40%" class="data_1" value="" >
+                </div>
+                <div>
+                    <label>指&nbsp;令2&nbsp;:</label>
+                    <input type="text" style="width: 40%" class="modbus_2" value="" >
+                    <input type="text" style="width: 40%" class="data_2" value="" >
+                </div>
+                <div>
+                    <label>指&nbsp;令3&nbsp;:</label>
+                    <input type="text" style="width: 40%" class="modbus_3" value="" >
+                    <input type="text" style="width: 40%" class="data_3" value="" >
+                </div>
+                <div>
+                    <label>指&nbsp;令4&nbsp;:</label>
+                    <input type="text" style="width: 40%" class="modbus_4" value="" >
+                    <input type="text" style="width: 40%" class="data_4" value="" >
+                </div>
+                <div>
+                    <label>指&nbsp;令5&nbsp;:</label>
+                    <input type="text" style="width: 40%" class="modbus_5" value="" >
+                    <input type="text" style="width: 40%" class="data_5" value="" >
+                </div>
+                <div>
+                    <label>指&nbsp;令6&nbsp;:</label>
+                    <input type="text" style="width: 40%" class="modbus_6" value="" >
+                    <input type="text" style="width: 40%" class="data_6" value="" >
+                </div>
+                <div>
+                    <label>指&nbsp;令7&nbsp;:</label>
+                    <input type="text" style="width: 40%" class="modbus_7" value="" >
+                    <input type="text" style="width: 40%" class="data_7" value="" >
+                </div>
+                <div>
+                    <label>指&nbsp;令8&nbsp;:</label>
+                    <input type="text" style="width: 40%" class="modbus_8" value="" >
+                    <input type="text" style="width: 40%" class="data_8" value="" >
+                </div>
+                <div>
+                    <label>指&nbsp;令9&nbsp;:</label>
+                    <input type="text" style="width: 40%" class="modbus_9" value="" >
+                    <input type="text" style="width: 40%" class="data_9" value="" >
+                </div>
+                <div>
+                    <label>指令10:</label>
+                    <input type="text" style="width: 40%" class="modbus_10" value="" >
+                    <input type="text" style="width: 40%" class="data_10" value="" >
+                </div>
+            </div>
+            <div class="tab-pane fade  in" id="eight">
+                <div>
+                    <label>设备序列:</label>
+                    <input type="text" style="width: 45%" disabled class="devid" value="{$row.devicekey}" />
+                </div>
+                <div>
+                    <label>服务中心:</label>
+                    <select class="host" style="width: 45%">
+                        <option value="server1">server1</option>
+                        <option value="server2">server2</option>
+                        <option value="server3">server3</option>
+                    </select>
+                </div>
+                <div>
+                    <label>是否回应:</label>
+                    <input type="radio" value="0" name="is_result" checked>否 <input type="radio" value="1" name="is_result"> 是
+                </div>
+                <div>
+                    <label>发送内容:</label>
+                    <textarea class="data" style="width: 45%"></textarea>
+                </div>
+                <div>
+                    <label>回应内容:</label>
+                    <textarea disabled class="data_result" style="width: 45%"></textarea>
+                </div>
+                <div>
+                    <button onclick="down_agreement()">发送命令</button>
                 </div>
             </div>
         </div>
@@ -1000,6 +1089,40 @@
             }
         });
     }
+    function get_modbus(){
+        if(!devid){
+            alert("请设置设备序列号")
+            return '';
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/get',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "ckey":"set_modbus",
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                var data = obj.data;
+                if(data){
+                    $('.pub_time').val(data.pub_time)
+                    $('.modbus_1').val(data.modbus_1)
+                    $('.modbus_2').val(data.modbus_2)
+                    $('.modbus_3').val(data.modbus_3)
+                    $('.modbus_4').val(data.modbus_4)
+                    $('.modbus_5').val(data.modbus_5)
+                    $('.modbus_6').val(data.modbus_6)
+                    $('.modbus_7').val(data.modbus_7)
+                    $('.modbus_8').val(data.modbus_8)
+                    $('.modbus_9').val(data.modbus_9)
+                    $('.modbus_10').val(data.modbus_10)
+                    alert("设备操作成功");
+                }
+            }
+        });
+    }
     function set_modbus(){
         $('.el-overlay').show();
         if(!devid){
@@ -1066,6 +1189,112 @@
                                     $('.el-overlay').hide();
                                     $('.modbus').val(data.modbus)
                                     $('.result').val(data.result)
+                                    alert("获取数据成功");
+                                }
+                            }
+                        });
+                    },1000);
+                }
+                else {
+                    $('.el-overlay').hide();
+                    alert("API请求失败");
+                }
+            },
+            error:function () {
+                $('.el-overlay').hide();
+                alert("API请求失败");
+            }
+        });
+    }
+    function up_modbus(){
+        if(!devid){
+            alert("请设置设备序列号")
+            return '';
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/get',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "ckey":"up_modbus",
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                var data = obj.data;
+                if(data){
+                    $('.modbus_1').val(data.modbus_1)
+                    $('.modbus_2').val(data.modbus_2)
+                    $('.modbus_3').val(data.modbus_3)
+                    $('.modbus_4').val(data.modbus_4)
+                    $('.modbus_5').val(data.modbus_5)
+                    $('.modbus_6').val(data.modbus_6)
+                    $('.modbus_7').val(data.modbus_7)
+                    $('.modbus_8').val(data.modbus_8)
+                    $('.modbus_9').val(data.modbus_9)
+                    $('.modbus_10').val(data.modbus_10)
+                    $('.data_1').val(data.data_1)
+                    $('.data_2').val(data.data_2)
+                    $('.data_3').val(data.data_3)
+                    $('.data_4').val(data.data_4)
+                    $('.data_5').val(data.data_5)
+                    $('.data_6').val(data.data_6)
+                    $('.data_7').val(data.data_7)
+                    $('.data_8').val(data.data_8)
+                    $('.data_9').val(data.data_9)
+                    $('.data_10').val(data.data_10)
+                    alert("设备操作成功");
+                }
+            }
+        });
+    }
+    function down_agreement(){
+        $('.el-overlay').show();
+        if(!devid){
+            $('.el-overlay').hide();
+            alert("请设置设备序列号")
+            return '';
+        }
+        $.ajax({
+            async:true,
+            url:'http://idc.mingdingkeji.com/api/device/send',
+            type:'POST',
+            data:{
+                "devid":devid,
+                "cmd":"down_agreement_data",
+                "host":$('.host').val(),
+                "data":$('.data').val(),
+                "is_result":$('.is_result').val(),
+            },
+            dataType:'JSON',
+            timeout:5000,
+            success:function (obj) {
+                if(obj.code == 1){
+                    var i=0;
+                    timer = setInterval(function () {
+                        i++
+                        if(i>15){
+                            clearInterval(timer);
+                            $('.el-overlay').hide();
+                            alert("获取失败未返回数据");
+                        }
+                        $.ajax({
+                            async:true,
+                            url:'http://idc.mingdingkeji.com/api/device/get',
+                            type:'POST',
+                            data:{
+                                "devid":devid,
+                                "ckey":"down_agreement",
+                            },
+                            dataType:'JSON',
+                            timeout:5000,
+                            success:function (obj) {
+                                var data = obj.data;
+                                if(data){
+                                    clearInterval(timer);
+                                    $('.el-overlay').hide();
+                                    $('.data_result').val(data.result)
                                     alert("获取数据成功");
                                 }
                             }

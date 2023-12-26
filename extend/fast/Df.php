@@ -278,4 +278,89 @@ class Df
     public function down_modbus_resp($data){
         Cache::set('modbus:'.$data['devid'],['modbus'=>$data['modbus'],'result'=>$data['result']],60);
     }
+
+    /**
+     * 定义轮询
+     */
+    public function down_set_modbus($data)
+    {
+        $data['sn']=uniqid($data['devid'],true);
+        $data['cmd']='down_set_modbus';
+        return $this->resuly($data);
+    }
+
+    /**
+     * 定义轮询响应
+     */
+    public function down_set_modbus_resp($data)
+    {
+        Cache::set('set_modbus:'.$data['devid'],
+            [
+                'pub_time'=>$data['pub_time'],
+                'modbus_1'=>isset($data['modbus_1'])?$data['modbus_1']:'',
+                'modbus_2'=>isset($data['modbus_2'])?$data['modbus_2']:'',
+                'modbus_3'=>isset($data['modbus_3'])?$data['modbus_3']:'',
+                'modbus_4'=>isset($data['modbus_4'])?$data['modbus_4']:'',
+                'modbus_5'=>isset($data['modbus_5'])?$data['modbus_5']:'',
+                'modbus_6'=>isset($data['modbus_6'])?$data['modbus_6']:'',
+                'modbus_7'=>isset($data['modbus_7'])?$data['modbus_7']:'',
+                'modbus_8'=>isset($data['modbus_8'])?$data['modbus_8']:'',
+                'modbus_9'=>isset($data['modbus_9'])?$data['modbus_9']:'',
+                'modbus_10'=>isset($data['modbus_10'])?$data['modbus_10']:'',
+                'time'=>date("Y-m-d H:i:s"),
+            ]);
+    }
+
+    /**
+     * 轮询上报
+     */
+    public function up_modbus_data($data)
+    {
+        Cache::set('up_modbus:'.$data['devid'],
+            [
+                'modbus_1'=>isset($data['modbus_1'])?$data['modbus_1']:'',
+                'modbus_2'=>isset($data['modbus_2'])?$data['modbus_2']:'',
+                'modbus_3'=>isset($data['modbus_3'])?$data['modbus_3']:'',
+                'modbus_4'=>isset($data['modbus_4'])?$data['modbus_4']:'',
+                'modbus_5'=>isset($data['modbus_5'])?$data['modbus_5']:'',
+                'modbus_6'=>isset($data['modbus_6'])?$data['modbus_6']:'',
+                'modbus_7'=>isset($data['modbus_7'])?$data['modbus_7']:'',
+                'modbus_8'=>isset($data['modbus_8'])?$data['modbus_8']:'',
+                'modbus_9'=>isset($data['modbus_9'])?$data['modbus_9']:'',
+                'modbus_10'=>isset($data['modbus_10'])?$data['modbus_10']:'',
+                'data_1'=>isset($data['data_1'])?$data['data_1']:'',
+                'data_2'=>isset($data['data_2'])?$data['data_2']:'',
+                'data_3'=>isset($data['data_3'])?$data['data_3']:'',
+                'data_4'=>isset($data['data_4'])?$data['data_4']:'',
+                'data_5'=>isset($data['data_5'])?$data['data_5']:'',
+                'data_6'=>isset($data['data_6'])?$data['data_6']:'',
+                'data_7'=>isset($data['data_7'])?$data['data_7']:'',
+                'data_8'=>isset($data['data_8'])?$data['data_8']:'',
+                'data_9'=>isset($data['data_9'])?$data['data_9']:'',
+                'data_10'=>isset($data['data_10'])?$data['data_10']:'',
+            ]);
+    }
+
+    /**
+     * 协议透传
+     */
+    public function down_agreement_data($data)
+    {
+        $data['sn']=uniqid($data['devid'],true);
+        $data['cmd']='down_agreement_data';
+        return $this->resuly($data);
+    }
+
+    /**
+     * 透传回应
+     */
+    public function down_agreement_data_resp($data)
+    {
+        Cache::set('down_agreement:'.$data['devid'],
+            [
+                'host'=>$data['host'],
+                'data'=>$data['data'],
+                'result'=>$data['result'],
+            ]);
+    }
 }

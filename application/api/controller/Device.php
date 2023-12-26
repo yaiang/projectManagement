@@ -120,6 +120,10 @@ class Device extends Api
             $data = Cache::get('modbus:'.$devid);
         } elseif ($ckey == 'device_get_element'){
             $data = Cache::get('element:'.$devid);
+        } elseif ($ckey == 'set_modbus'){
+            $data = Cache::get('set_modbus:'.$devid);
+        } elseif($ckey == 'down_agreement'){
+            $data = Cache::get('down_agreement:'.$devid);
         }
         if($data){
             $this->success('请求成功',$data);

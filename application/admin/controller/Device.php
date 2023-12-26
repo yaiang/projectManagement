@@ -130,6 +130,7 @@ class Device extends Backend
                 $row->validateFailException()->validate($validate);
             }
             $result = $row->allowField(true)->save($params);
+            Cache::rm('device:'.$row['devicekey']);
             Db::commit();
         } catch (ValidateException|PDOException|Exception $e) {
             Db::rollback();
